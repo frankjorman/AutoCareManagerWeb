@@ -1,28 +1,39 @@
 <template>
-  <q-page>
-    <q-page-container>
-      <q-card class="q-pa-md">
-        <q-form @submit.prevent="login">
-          <q-input v-model="username" label="Username" />
-          <q-input v-model="password" label="Password" type="password" />
-          <q-btn type="submit" label="Login" class="q-mt-md" />
-        </q-form>
-      </q-card>
-    </q-page-container>
-  </q-page>
+  <div class="window-height window-width row justify-center items-center">
+    <div class="q-pa-md" style="max-width: 400px">
+      <h2 style="color: blue">LOGIN</h2>
+      <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+        <q-input outlined v-model="user" label="Usuario" />
+        <q-input outlined v-model="pass" label="Contraseña" />
+
+        <div class="row justify-center">
+          <q-btn label="Enviar" type="input" color="primary" />
+        </div>
+      </q-form>
+    </div>
+  </div>
 </template>
 
 <script>
+import { ref } from "vue";
+import { Axios } from "axios";
+import axios from "src/boot/axios";
+
 export default {
-  data() {
+  setup() {
     return {
-      username: "",
-      password: "",
+      text: ref(""),
+      pass: ref(""),
     };
   },
   methods: {
-    login() {
-      // Aquí puedes agregar la lógica para enviar el formulario de inicio de sesión
+    async IniciarSesion() {
+      const response = await axios.get("", {
+        user: this.user,
+        pass: this.pass,
+      });
+
+      this.placeholders = response.data;
     },
   },
 };

@@ -1,32 +1,48 @@
 <template>
-  <table>
-    <thead>
-      <tr>
-        <th>Employee Name</th>
-        <th>Employee ID</th>
-        <th>Department</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(employee, index) in employees" :key="index">
-        <td>{{ employee.name }}</td>
-        <td>{{ employee.id }}</td>
-        <td>{{ employee.department }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <q-page>
+    <div class="row">
+      <q-table
+        color="secondary"
+        :loading="loading"
+        :rows="empleados"
+        :columns="columns"
+        class="col"
+      />
+    </div>
+  </q-page>
 </template>
 
 <script>
-export default {
-  data() {
+import { defineComponent, ref } from "vue";
+import axios from "axios";
+
+export default defineComponent({
+  setup() {
+    const loading = ref(true);
+    const empleados = ref([]);
+
+    const columns = [
+      { name: "idEmpleado", label: "Id", field: "idEmpleado", align: "left" },
+      { name: "nombre", label: "Nombre", field: "nombre", align: "center" },
+      { name: "apellido", label: "Apellido", field: "apellido" },
+      { name: "estado", label: "Estado", field: "estado" },
+    ];
+
+    axios
+      .get("https://localhost:44341/api/Empleados")
+      .then((response) => {
+        empleados.value = response.data;
+        console.log(response.data);
+      })
+      .finally(() => {
+        loading.value = false;
+      });
+
     return {
-      employees: [
-        { name: "John Doe", id: 1234, department: "Sales" },
-        { name: "Jane Smith", id: 5678, department: "Marketing" },
-        { name: "Bob Johnson", id: 9012, department: "Finance" },
-      ],
+      columns,
+      loading,
+      empleados,
     };
   },
-};
+});
 </script>
