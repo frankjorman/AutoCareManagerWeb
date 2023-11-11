@@ -1,6 +1,9 @@
 <template>
   <q-page>
     <div class="row">
+      <q-btn label="Nuevo" color="primary" @click="fixed = true" icon="add" />
+    </div>
+    <div class="row q-mt-md">
       <q-table
         color="secondary"
         :loading="loading"
@@ -10,6 +13,25 @@
       />
     </div>
   </q-page>
+
+  <q-dialog v-model="fixed">
+    <q-card>
+      <q-card-section>
+        <div class="text-h6">Empleado</div>
+      </q-card-section>
+
+      <q-separator />
+
+      <q-card-section style="max-height: 50vh" class="scroll"> </q-card-section>
+
+      <q-separator />
+
+      <q-card-actions align="right">
+        <q-btn flat label="Decline" color="primary" v-close-popup />
+        <q-btn flat label="Accept" color="primary" v-close-popup />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script>
@@ -39,9 +61,13 @@ export default defineComponent({
       });
 
     return {
+      //table
       columns,
       loading,
       empleados,
+      //dialog
+      basic: ref(false),
+      fixed: ref(false),
     };
   },
 });

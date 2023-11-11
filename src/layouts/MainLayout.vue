@@ -17,36 +17,67 @@
           "
         >
           <q-list padding>
+            <q-item clickable v-ripple @click="link = 'inbox'">
+              <q-item-section avatar>
+                <q-icon name="inbox" />
+              </q-item-section>
+              <q-item-section> Taller </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple @click="empleado">
+              <q-item-section avatar>
+                <q-icon name="inbox" />
+              </q-item-section>
+
+              <q-item-section> Mecanicos </q-item-section>
+            </q-item>
+
             <q-item clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="inbox" />
               </q-item-section>
 
-              <q-item-section> Inbox </q-item-section>
-            </q-item>
-
-            <q-item active clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="star" />
-              </q-item-section>
-
-              <q-item-section> Star </q-item-section>
+              <q-item-section> Clientes </q-item-section>
             </q-item>
 
             <q-item clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="send" />
+                <q-icon name="inbox" />
               </q-item-section>
 
-              <q-item-section> Send </q-item-section>
+              <q-item-section> Vehiculos </q-item-section>
             </q-item>
 
             <q-item clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="drafts" />
+                <q-icon name="inbox" />
               </q-item-section>
 
-              <q-item-section> Drafts </q-item-section>
+              <q-item-section> Reparaciones y Matenimientos </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="inbox" />
+              </q-item-section>
+
+              <q-item-section> Facturas</q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="inbox" />
+              </q-item-section>
+
+              <q-item-section> Inventario y Piezas</q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="inbox" />
+              </q-item-section>
+
+              <q-item-section> Informes y Estadisticas</q-item-section>
             </q-item>
           </q-list>
         </q-scroll-area>
@@ -60,8 +91,10 @@
             <q-avatar size="56px" class="q-mb-sm">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
             </q-avatar>
-            <div class="text-weight-bold">Razvan Stoenescu</div>
-            <div>@rstoenescu</div>
+            <div class="text-weight-bold">
+              {{ nombreUsuario }}
+            </div>
+            <div>{{ perfilUsuario }}</div>
           </div>
         </q-img>
       </q-drawer>

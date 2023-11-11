@@ -1,33 +1,49 @@
 const routes = [
   {
-    path: "/",
+    path: "/layout",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/IndexPage.vue") }],
     children: [
       {
+        path: "Taller",
+        component: () => import("pages/TallerMantenimiento.vue"),
+      },
+      {
         path: "Empleado",
-        component: () => import("pages/EmpleadoMantenimiento.vue"),
+        component: () => import("pages/MecanicoMantenimiento.vue"),
+      },
+      {
+        path: "Empleado",
+        component: () => import("pages/ClienteMantenimiento.vue"),
+      },
+      {
+        path: "Empleado",
+        component: () => import("pages/VehiculoMantenimiento.vue"),
+      },
+      {
+        path: "Empleado",
+        component: () => import("pages/ReparacionesMantenimiento.vue"),
+      },
+      {
+        path: "Empleado",
+        component: () => import("pages/Facturas.vue"),
+      },
+      {
+        path: "Empleado",
+        component: () => import("pages/InventarioPiezas.vue"),
+      },
+      {
+        path: "Empleado",
+        component: () => import("pages/InformesEstadisticas.vue"),
       },
     ],
   },
   {
-    path: "/layoutYoutube",
-    component: () => import("layouts/YoutubeLayout.vue"),
-    children: [
-      { path: "login", component: () => import("pages/LoginInicio.vue") },
-    ],
-  },
-  {
-    path: "/layoutWhatsapp",
-    component: () => import("layouts/WhatsappLayout.vue"),
-    children: [
-      { path: "login", component: () => import("pages/LoginInicio.vue") },
-      { path: "wa", component: () => import("pages/WaEjemplo.vue") },
-    ],
-  },
-  {
-    path: "/login",
+    path: "/",
     component: () => import("pages/LoginInicio.vue"),
+  },
+  {
+    path: "/registrar",
+    component: () => import("pages/RegisterForm.vue"),
   },
   // Always leave this as last one,
   // but you can also remove it
