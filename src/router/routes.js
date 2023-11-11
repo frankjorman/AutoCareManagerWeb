@@ -5,27 +5,27 @@ const routes = [
     children: [
       {
         path: "Taller",
-        component: () => import("pages/TallerMantenimiento.vue"),
+        component: () => import("pages/TallerInformacion.vue"),
       },
       {
         path: "Empleado",
         component: () => import("pages/MecanicoMantenimiento.vue"),
       },
       {
-        path: "Empleado",
-        component: () => import("pages/ClienteMantenimiento.vue"),
+        path: "Cliente",
+        component: () => import("pages/ClienteInformacion.vue"),
       },
       {
-        path: "Empleado",
-        component: () => import("pages/VehiculoMantenimiento.vue"),
+        path: "Vehiculo",
+        component: () => import("pages/VehiculoInforma.vue"),
       },
       {
-        path: "Empleado",
-        component: () => import("pages/ReparacionesMantenimiento.vue"),
+        path: "Reparaciones",
+        component: () => import("pages/ReparacionesInf.vue"),
       },
       {
-        path: "Empleado",
-        component: () => import("pages/Facturas.vue"),
+        path: "Facturas",
+        component: () => import("pages/FacturasInf.vue"),
       },
       {
         path: "Empleado",
