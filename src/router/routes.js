@@ -13,11 +13,11 @@ const routes = [
       },
       {
         path: "Cliente",
-        component: () => import("pages/ClienteInformacion.vue"),
+        component: () => import("pages/ClienteMantenimiento.vue"),
       },
       {
         path: "Vehiculo",
-        component: () => import("pages/VehiculoInforma.vue"),
+        component: () => import("pages/VehiculoMantenimiento.vue"),
       },
       {
         path: "Reparaciones",

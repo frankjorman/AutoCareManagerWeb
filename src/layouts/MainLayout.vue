@@ -51,7 +51,11 @@
               <q-item-section> Clientes </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item
+              clickable
+              v-ripple
+              onclick="location.href='/?#/layout/Vehiculo'"
+            >
               <q-item-section avatar>
                 <q-icon name="inbox" />
               </q-item-section>
