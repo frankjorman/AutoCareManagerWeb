@@ -17,14 +17,22 @@
           "
         >
           <q-list padding>
-            <q-item clickable v-ripple @click="link = 'inbox'">
+            <q-item
+              clickable
+              v-ripple
+              onclick="location.href='/?#/layout/Taller'"
+            >
               <q-item-section avatar>
                 <q-icon name="inbox" />
               </q-item-section>
               <q-item-section> Taller </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple @click="empleado">
+            <q-item
+              clickable
+              v-ripple
+              onclick="location.href='/?#/layout/Empleado'"
+            >
               <q-item-section avatar>
                 <q-icon name="inbox" />
               </q-item-section>
@@ -32,11 +40,14 @@
               <q-item-section> Mecanicos </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item
+              clickable
+              v-ripple
+              onclick="location.href='/?#/layout/Cliente'"
+            >
               <q-item-section avatar>
                 <q-icon name="inbox" />
               </q-item-section>
-
               <q-item-section> Clientes </q-item-section>
             </q-item>
 
