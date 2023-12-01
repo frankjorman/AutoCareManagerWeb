@@ -16,8 +16,8 @@ const routes = [
         component: () => import("pages/ClienteMantenimiento.vue"),
       },
       {
-        path: "Vehiculo",
-        component: () => import("pages/VehiculoMantenimiento.vue"),
+        path: "Serviciorealizados",
+        component: () => import("pages/ServicioRealizados.vue"),
       },
       {
         path: "Reparaciones",

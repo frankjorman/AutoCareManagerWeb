@@ -18,8 +18,8 @@
       >
         <template v-slot:body="props">
           <q-tr :props="props">
-            <q-td key="idCliente" :props="props">
-              {{ props.row.idCliente }}
+            <q-td key="idVehiculo" :props="props">
+              {{ props.row.idVehiculo }}
             </q-td>
             <q-td key="numDocumento" :props="props">
               {{ props.row.numDocumento }}
@@ -55,7 +55,7 @@
                   </svg>
                 </div>
                 <div
-                  @click="deleteEmploye(props.row.idCliente)"
+                  @click="deleteEmploye(props.row.idVehiculo)"
                   style="cursor: pointer; margin-left: 5px"
                 >
                   <svg
@@ -147,7 +147,7 @@ export default {
       loading: false,
       clientes: [],
       columns: [
-        { name: "idCliente", label: "Id", field: "idCliente", align: "left" },
+        { name: "idVehiculo", label: "Id", field: "idVehiculo", align: "left" },
         {
           name: "numDocumento",
           label: "Documento",
@@ -216,9 +216,9 @@ export default {
           this.loading = false;
         });
     },
-    deleteEmploye(idCliente) {
+    deleteEmploye(idVehiculo) {
       axios
-        .delete(`http://localhost:5116/api/clientes/${idCliente}`)
+        .delete(`http://localhost:5116/api/clientes/${idVehiculo}`)
         .then(() => {
           this.getEmployees();
           alert("El cliente fue eliminado");

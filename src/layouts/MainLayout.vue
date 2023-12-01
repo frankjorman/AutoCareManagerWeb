@@ -63,7 +63,11 @@
               <q-item-section> Vehiculos </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item
+              clickable
+              v-ripple
+              onclick="location.href='/?#/layout/ServicioRealizados'"
+            >
               <q-item-section avatar>
                 <q-icon name="inbox" />
               </q-item-section>
