@@ -24,12 +24,12 @@ const routes = [
         component: () => import("pages/ReparacionesInf.vue"),
       },
       {
-        path: "Facturas",
-        component: () => import("pages/FacturasInf.vue"),
+        path: "Factura",
+        component: () => import("pages/FacturaPage.vue"),
       },
       {
-        path: "Empleado",
-        component: () => import("pages/InventarioPiezas.vue"),
+        path: "Vehiculo",
+        component: () => import("pages/VehiculoMantenimiento.vue"),
       },
       {
         path: "Empleado",

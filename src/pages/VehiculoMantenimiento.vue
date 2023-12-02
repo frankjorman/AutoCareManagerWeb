@@ -12,7 +12,7 @@
       <q-table
         color="secondary"
         :loading="loading"
-        :rows="clientes"
+        :rows="vehiculos"
         :columns="columns"
         class="col"
       >
@@ -21,17 +21,17 @@
             <q-td key="idVehiculo" :props="props">
               {{ props.row.idVehiculo }}
             </q-td>
-            <q-td key="numDocumento" :props="props">
-              {{ props.row.numDocumento }}
+            <q-td key="marca" :props="props">
+              {{ props.row.marca }}
             </q-td>
-            <q-td key="nombre" :props="props">
-              {{ props.row.nombre }}
+            <q-td key="modelo" :props="props">
+              {{ props.row.modelo }}
             </q-td>
-            <q-td key="telefono" :props="props">
-              {{ props.row.telefono }}
+            <q-td key="placa" :props="props">
+              {{ props.row.placa }}
             </q-td>
-            <q-td key="correo" :props="props">
-              {{ props.row.correo }}
+            <q-td key="anio" :props="props">
+              {{ props.row.anio }}
             </q-td>
             <q-td key="acciones" :props="props">
               <div style="display: inline-flex; align-items: center">
@@ -90,9 +90,9 @@
       <q-separator />
 
       <q-card-section style="max-height: 100vh" class="scroll">
-        <q-input v-model="form.numDocumento" label="Documento" />
-        <q-input v-model="form.nombre" label="Nombre" />
-        <q-input v-model="form.telefono" label="Telefono" />
+        <q-input v-model="form.marca" label="Documento" />
+        <q-input v-model="form.modelo" label="Nombre" />
+        <q-input v-model="form.placa" label="Telefono" />
 
         <q-input v-model="form.correo" label="Correo" />
       </q-card-section>
@@ -145,18 +145,13 @@ export default {
       showCreateModal: false,
       showUpdateModal: false,
       loading: false,
-      clientes: [],
+      vehiculos: [],
       columns: [
         { name: "idVehiculo", label: "Id", field: "idVehiculo", align: "left" },
-        {
-          name: "numDocumento",
-          label: "Documento",
-          field: "Documento",
-          align: "center",
-        },
-        { name: "nombre", label: "Nombre", field: "nombre", align: "center" },
-        { name: "telefono", label: "Telefono", field: "telefono" },
-        { name: "correo", label: "Correo", field: "correo" },
+        { name: "marca", label: "Marca", field: "marca", align: "center" },
+        { name: "modelo", label: "Modelo", field: "modelo" },
+        { name: "placa", label: "Placa", field: "placa" },
+        { name: "anio", label: "Año", field: "anio" },
         {
           name: "acciones",
           label: "Acciones",
@@ -184,7 +179,7 @@ export default {
     },
     updateEmployee() {
       axios
-        .put("http://localhost:5116/api/clientes", this.form)
+        .put("http://localhost:5116/api/vehiculos", this.form)
         .then((response) => {
           this.getEmployees();
         })
@@ -195,7 +190,7 @@ export default {
     registrarCliente() {
       this.form.estado = true;
       axios
-        .post("http://localhost:5116/api/clientes", this.form)
+        .post("http://localhost:5116/api/vehiculos", this.form)
         .then((response) => {
           this.getEmployees();
         })
@@ -208,9 +203,10 @@ export default {
     },
     getEmployees() {
       axios
-        .get("http://localhost:5116/api/clientes")
+        .get("http://localhost:5116/api/vehiculos")
         .then((response) => {
-          this.clientes = response.data;
+          this.vehiculos = response.data;
+          debugger;
         })
         .finally(() => {
           this.loading = false;
@@ -218,7 +214,7 @@ export default {
     },
     deleteEmploye(idVehiculo) {
       axios
-        .delete(`http://localhost:5116/api/clientes/${idVehiculo}`)
+        .delete(`http://localhost:5116/api/vehiculos/${idVehiculo}`)
         .then(() => {
           this.getEmployees();
           alert("El cliente fue eliminado");

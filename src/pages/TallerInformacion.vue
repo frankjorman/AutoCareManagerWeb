@@ -2,10 +2,16 @@
   <div>
     <h5>Taller Mecanico</h5>
     <q-form @submit="submitForm">
-      <q-input outlined v-model="name" label="Name" class="q-mb-md" required />
       <q-input
         outlined
-        v-model="email"
+        v-model="form.name"
+        label="Name"
+        class="q-mb-md"
+        required
+      />
+      <q-input
+        outlined
+        v-model="form.email"
         label="Email"
         type="email"
         class="q-mb-md"
@@ -13,7 +19,7 @@
       />
       <q-input
         outlined
-        v-model="phone"
+        v-model="form.phone"
         label="Phone"
         type="tel"
         class="q-mb-md"
@@ -21,7 +27,7 @@
       />
       <q-input
         outlined
-        v-model="address"
+        v-model="form.address"
         label="Address"
         class="q-mb-md"
         required
@@ -33,16 +39,45 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      name: "",
-      email: "",
-      phone: "",
-      address: "",
+      form: {
+        name: "",
+        email: "",
+        phone: "",
+        address: "",
+      },
     };
   },
+  created() {
+    this.getClients();
+  },
   methods: {
+    getClients() {
+      axios
+        .get("http://localhost:5116/api/Configuraciones")
+        .then((response) => {
+          response.data.map((item) => {
+            if (item.codigo == "nombre") {
+              this.form.name = item.descripcion;
+            }
+
+            if (item.codigo == "correo") {
+              this.form.email = item.descripcion;
+            }
+
+            if (item.codigo == "direccion") {
+              this.form.address = item.descripcion;
+            }
+
+            if (item.codigo == "telefono") {
+              this.form.phone = item.descripcion;
+            }
+          });
+        });
+    },
     submitForm() {
       // Submit form data to backend API
       const formData = {
