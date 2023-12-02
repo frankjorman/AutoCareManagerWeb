@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h5>Taller Mecanico</h5>
+    <h5>SERVICIOS REALIZADOS</h5>
     <q-btn
       label="Nuevo"
       color="primary"
@@ -11,23 +11,32 @@
       <q-table
         color="secondary"
         :loading="loading"
-        :rows="empleados"
+        :rows="serviciosRealizados"
         :columns="columns"
         class="col"
       >
         <template v-slot:body="props">
           <q-tr :props="props">
-            <q-td key="idEmpleado" :props="props">
-              {{ props.row.idEmpleado }}
+            <q-td key="idServicioRealizado" :props="props">
+              {{ props.row.idServicioRealizado }}
             </q-td>
-            <q-td key="nombre" :props="props">
-              {{ props.row.nombre }}
+            <q-td key="fecha" :props="props">
+              {{ props.row.fecha }}
             </q-td>
-            <q-td key="apellido" :props="props">
-              {{ props.row.apellido }}
+            <q-td key="idVehiculo" :props="props">
+              {{ props.row.idVehiculo }}
             </q-td>
-            <q-td key="estado" :props="props">
-              {{ props.row.estado }}
+            <q-td key="idCliente" :props="props">
+              {{ props.row.idCliente }}
+            </q-td>
+            <q-td key="idServicio" :props="props">
+              {{ props.row.idServicio }}
+            </q-td>
+            <q-td key="idRepuesto" :props="props">
+              {{ props.row.idRepuesto }}
+            </q-td>
+            <q-td key="idFactura" :props="props">
+              {{ props.row.idFactura }}
             </q-td>
             <q-td key="acciones" :props="props">
               <div style="display: inline-flex; align-items: center">
@@ -164,6 +173,7 @@ export default {
       clients: [],
       services: [],
       parts: [],
+      serviciosRealizados: [],
       showCreateModal: false,
     };
   },
@@ -172,6 +182,7 @@ export default {
     this.getServices();
     this.getParts();
     this.getVehicles();
+    this.getServiciosRealizados();
   },
   methods: {
     formatDate(date) {
@@ -204,6 +215,13 @@ export default {
       axios.get("http://localhost:5116/api/Vehiculos").then((response) => {
         this.vehicles = response.data;
       });
+    },
+    getServiciosRealizados() {
+      axios
+        .get("http://localhost:5116/api/ServicioRealizados")
+        .then((response) => {
+          this.serviciosRealizados = response.data;
+        });
     },
     register() {
       this.form.fecha = this.formatDate(this.form.fecha);
